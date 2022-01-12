@@ -1,8 +1,8 @@
 <template>
   <div class="popup-info">
     <div class="popup-info__header">
-      <div class="popup-info__header-close" @click="closePopup">
-        <img src="..\assets\vector7.png" />
+      <div class="popup-info__header-close">
+        <img @click="closePopup" src="..\assets\vector7.png" />
       </div>
     </div>
     <div class="popup-info__content">
@@ -82,10 +82,27 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  right: 0;
-  left: 0;
+  position: sticky;
   top: 0;
-  bottom: 0;
+  /* bottom: 0; */
+  flex-direction: column;
+  height: 100vh;
+  z-index: 10;
+}
+.popup-info__content {
+  background-color: #fff;
+  z-index: 10;
+  width: 80vw;
+}
+
+.popup-info__header {
+  background-color: #fff;
+  z-index: 9;
+  width: 80vw;
+  text-align: end;
+}
+
+.popup-info__header-close {
+  z-index: 10;
 }
 </style>

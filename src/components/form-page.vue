@@ -1,5 +1,9 @@
 <template>
   <div class="form-page">
+    <popup-info-form-page
+      v-if="isPopupBtnClicked"
+      @closeThisPopup="closeThisPopup"
+    />
     <div class="form-page__header">
       <div class="form-page__header-img">
         <img src="..\assets\Group2.png" />
@@ -115,8 +119,9 @@
             условия рассмотрения обращений *
           </div>
         </div>
-
-        <button class="form-page__data-personal-sendbtn">отправить</button>
+        <router-link :to="{ name: 'thanks-page' }">
+          <button class="form-page__data-personal-sendbtn">отправить</button>
+        </router-link>
       </div>
       <div class="form-page__data-general">
         <h2>Наша суперцель</h2>
@@ -154,17 +159,20 @@
         </div>
         <div class="form-page__footer-first-share"><h2>поделиться</h2></div>
         <div class="form-page__footer-first-social">
-          <img src="..\assets\Vector.png" alt="" /><img
-            src="..\assets\Vector1.png"
-            alt=""
-          />
+          <a href="https://www.facebook.com/"
+            ><img src="..\assets\Vector.png" alt=""
+          /></a>
+
+          <a href="https://vk.com/"
+            ><img src="..\assets\Vector1.png" alt=""
+          /></a>
         </div>
       </div>
       <div class="form-page__footer-second">
         <div class="form-page__footer-second-copyright">
           © Гросс маркет 2020
         </div>
-        <div class="form-page__footer-second-policy">
+        <div class="form-page__footer-second-policy" @click="popupClick">
           Политика обработки персональных данных
         </div>
       </div>
@@ -173,14 +181,27 @@
 </template>
 
 <script>
+import popupInfoFormPage from "../popup/popup-info-form-page.vue";
 export default {
   name: "form-page",
+  components: { popupInfoFormPage },
+  methods: {
+    popupClick() {
+      this.isPopupBtnClicked = true;
+    },
+    closeThisPopup() {
+      this.isPopupBtnClicked = false;
+    },
+  },
+  data() {
+    return { isPopupBtnClicked: false };
+  },
 };
 </script>
 
 <style>
 .form-page {
-  height: 1448px;
+  /* height: 1448px; */
   background: #ffffff;
 }
 .form-page__header {
@@ -498,8 +519,13 @@ export default {
   margin-left: 30px;
 }
 
-.form-page__footer-first-title-img{
+.form-page__footer-first-title-img {
   padding-top: 33px;
+  margin-right: 16px;
+}
+
+.form-page__footer-first-social img {
+  margin-right: 8px;
 }
 
 @media screen and (max-width: 885px) and (min-width: 768px) {
@@ -556,7 +582,7 @@ export default {
   .form-page__footer-first-share h2 {
     font-size: 5vw;
   }
-  .form-page__footer-first-title h2{
+  .form-page__footer-first-title h2 {
     font-size: 5vw;
   }
 }

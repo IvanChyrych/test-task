@@ -1,8 +1,8 @@
 <template>
   <div class="main-page">
-    <popup-info 
-    v-if="isPopupBtnClicked" 
-    @closeThisPopup="closeThisPopup"
+    <popup-info-main-page
+      v-if="isPopupBtnClicked"
+      @closeThisPopup="closeThisPopup"
     />
 
     <div class="main-page__header">
@@ -19,40 +19,16 @@
         />
       </router-link>
     </div>
-    <div class="main-page__screen-1">
-      <div class="main-page__screen-1-discription">
-        <div class="main-page__screen-1-discription-text">
-          <h1>
-            У тебя <br />
-            к этому <br />
-            талант
-          </h1>
-        </div>
-        <div class="main-page__screen-1-discription-text-mobile-version">
-          <h1>
-            У тебя к этому <br />
-            талант
-          </h1>
-        </div>
-        <div class="main-page__screen-1-discription-buttons">
-          <img src="..\assets\Group32.png" alt="" />
-        </div>
-      </div>
 
-      <div class="main-page__screen-1-photo"></div>
+    <div class="main-page__screen-1">
+      <main-carousel :mainCarousel_data="sliderItems" />
+      <!-- <div class="main-page__screen-1-photo"></div> -->
     </div>
+
     <div class="main-page__vacancies">
-      <div class="main-page__vacancies-discription-title">
-        <h2>вакансии в гросс маркете</h2>
-      </div>
-      <div class="main-page__vacancies-discription-buttons">
-        <img src="..\assets\Group32.png" alt="" />
-      </div>
-    </div>
-    <div class="main-page__vacancies-cards">
-      <div class="main-page__vacancies-cards-1"></div>
-      <div class="main-page__vacancies-cards-2"></div>
-      <div class="main-page__vacancies-cards-3"></div>
+      <vacancies-carousel 
+      :vacanciesCarousel_data="sliderVacanciesItems"
+      />
     </div>
 
     <div class="main-page__instagram-title">
@@ -69,7 +45,16 @@
       <h2>география</h2>
     </div>
     <div class="main-page__geography">
-      <div class="main-page__geography-map"></div>
+      <div class="main-page__geography-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d77819.99133109793!2d31.021465599999996!3d52.445184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sby!4v1642002285389!5m2!1sru!2sby"
+          width="1110"
+          height="540"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
     </div>
 
     <div class="main-page__footer">
@@ -89,10 +74,13 @@
 
         <div class="main-page__footer-first-share"><h2>поделиться</h2></div>
         <div class="main-page__footer-first-social">
-          <img src="..\assets\Vector.png" alt="" /><img
-            src="..\assets\Vector1.png"
-            alt=""
-          />
+          <a href="https://www.facebook.com/"
+            ><img src="..\assets\Vector.png" alt=""
+          /></a>
+
+          <a href="https://vk.com/"
+            ><img src="..\assets\Vector1.png" alt=""
+          /></a>
         </div>
       </div>
       <div class="main-page__footer-second">
@@ -108,35 +96,56 @@
 </template>
 
 <script>
-import popupInfo from "../popup/popup-info.vue";
+import popupInfoMainPage from "../popup/popup-info-main-page.vue";
+import mainCarousel from "./main-carousel.vue";
+import vacanciesCarousel from "./vacancies-carousel.vue";
 
 export default {
   name: "mainPage",
   components: {
-    popupInfo,
+    popupInfoMainPage,
+    mainCarousel,
+    vacanciesCarousel,
   },
   data() {
     return {
       isPopupBtnClicked: false,
+      sliderItems: [
+        { id: 1, name: "man", img: "man.png" },
+        { id: 2, name: "woman", img: "woman.png" },
+      ],
+      sliderVacanciesItems: [
+        { id: 1, name: "tovaroved", img: "1.png" },
+        { id: 2, name: "voditel", img: "2.png" },
+        { id: 3, name: "pekar", img: "3.png" },
+        { id: 4, name: "kassir", img: "4.png" },
+        { id: 5, name: "prodavec", img: "5.png" },
+        { id: 6, name: "povar", img: "6.png" },
+        { id: 7, name: "priemschik", img: "7.png" },
+      ],
     };
   },
   methods: {
     popupClick() {
       this.isPopupBtnClicked = true;
     },
-    closeThisPopup(){
+    closeThisPopup() {
       this.isPopupBtnClicked = false;
-    }
+    },
   },
 };
 </script>
 
 
-<style scoped>
+<style >
 .main-page {
   /* height: 2887px;
   width: 1440px; */
   border-radius: 0px;
+}
+
+.main-page__header a {
+  text-decoration: none;
 }
 
 .main-page__header {
@@ -230,51 +239,6 @@ export default {
 
 .main-page__screen-1-discription-buttons {
   margin-top: 62px;
-}
-
-.main-page__vacancies {
-  display: flex;
-  justify-content: center;
-}
-
-.main-page__vacancies-discription {
-  display: flex;
-  /* margin-left: 165px; */
-  margin-top: 43px;
-}
-
-.main-page__vacancies-discription-title {
-  width: 409px;
-  height: 41px;
-}
-
-.main-page__vacancies-discription-title h2 {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 41px;
-  color: #000000;
-  white-space: nowrap;
-}
-
-.main-page__vacancies-discription-buttons {
-  width: 600px;
-  margin-top: 27px;
-  text-align: end;
-}
-
-.main-page__vacancies-cards {
-  display: flex;
-  justify-content: center;
-}
-
-.main-page__vacancies-cards-1 {
-  width: 350px;
-  height: 482px;
-  background: #f5f5f5;
-  border-radius: 8px;
-  /* margin-left: 165px; */
-  margin-top: 26px;
 }
 
 .main-page__instagram {
@@ -437,8 +401,17 @@ export default {
 }
 .main-page__footer-first-title-img {
   margin-top: 35px;
+  margin-right: 16px;
 }
 .main-page__screen-1-discription-text-mobile-version {
+  display: none;
+}
+
+.main-page__footer-first-social img {
+  margin-right: 8px;
+}
+
+.main-carousel__discription-text-mobile-version {
   display: none;
 }
 

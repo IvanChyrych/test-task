@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import formPage from '../components/form-page'
 import mainPage from '../components/main-page'
+import thanksPage from '../components/thanks-page'
 
 Vue.use(Router);
 
@@ -16,6 +17,11 @@ let router = new Router({
             path: '/form-page',
             name: 'form-page',
             component: formPage,
+        },
+        {
+            path: '/thanks-page',
+            name: 'thanks-page',
+            component: thanksPage,
         }
     ]
 })
