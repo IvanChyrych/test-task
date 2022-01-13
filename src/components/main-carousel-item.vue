@@ -17,4 +17,7 @@ export default {
 </script>
 
 <style>
+.main-carousel-item{
+  transition: all ease .5s;
+}
 </style>

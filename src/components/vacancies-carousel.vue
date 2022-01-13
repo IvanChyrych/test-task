@@ -9,18 +9,21 @@
         <img
           class="vacancies-carousel__discription-buttons-left"
           src="..\assets\11.png"
-          alt=""
+          @click="previousVacanciesImg"
         />
         <img
           class="vacancies-carousel__discription-buttons-right"
           src="..\assets\22.png"
-          alt=""
+          @click="nextVacanciesImg"
         />
       </div>
     </div>
 
-    <div class="vacancies-carousel__cards">
-      <div class="vacancies-carousel__cards-1"></div>
+    <div
+      class="vacancies-carousel__cards"
+      :style="{ 'margin-left': currentVacanciesImgIndex * 150 + '%' }"
+      
+    >
       <vacancies-carousel-item
         v-for="item in vacanciesCarousel_data"
         :key="item.id"
@@ -44,6 +47,25 @@ export default {
       default: () => [],
     },
   },
+  methods: {
+    previousVacanciesImg() {
+      
+      if (this.currentVacanciesImgIndex > -1) {
+        this.currentVacanciesImgIndex--;
+        console.log(this.currentVacanciesImgIndex);
+      }
+    },
+    nextVacanciesImg() {
+      
+      if (this.currentVacanciesImgIndex <= 0) {
+        this.currentVacanciesImgIndex++;
+        console.log(this.currentVacanciesImgIndex);
+      }
+    },
+  },
+  data() {
+    return { currentVacanciesImgIndex: -1 };
+  },
 };
 </script>
 
@@ -51,6 +73,8 @@ export default {
 .vacancies-carousel {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  width: 992px;
 }
 
 .vacancies-carousel__discription {
@@ -78,14 +102,6 @@ export default {
 .vacancies-carousel__cards {
   display: flex;
   justify-content: center;
-}
-
-.vacancies-carousel__cards-1 {
-  width: 350px;
-  height: 482px;
-  background: #f5f5f5;
-  border-radius: 8px;
-  /* margin-left: 165px; */
-  margin-top: 26px;
+  transition: all ease 0.5s;
 }
 </style>

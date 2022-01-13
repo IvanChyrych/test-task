@@ -342,6 +342,7 @@ export default {
 .form-page__data {
   display: flex;
   margin-top: 32px;
+  justify-content: center;
 }
 
 .form-page__data-general {

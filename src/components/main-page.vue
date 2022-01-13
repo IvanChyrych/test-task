@@ -26,9 +26,7 @@
     </div>
 
     <div class="main-page__vacancies">
-      <vacancies-carousel 
-      :vacanciesCarousel_data="sliderVacanciesItems"
-      />
+      <vacancies-carousel :vacanciesCarousel_data="sliderVacanciesItems" />
     </div>
 
     <div class="main-page__instagram-title">
@@ -36,9 +34,45 @@
     </div>
     <div class="main-page__instagram">
       <div class="main-page__instagram-cards">
-        <div class="main-page__instagram-cards-1"></div>
+        <div class="main-page__instagram-cards-preview">
+          <div class="main-page__instagram-cards-1"></div>
+          <div class="main-page__instagram-cards-2">
+            <div class="main-page__instagram-cards-2-item">One</div>
+            <div class="main-page__instagram-cards-2-item">Two</div>
+            <div class="main-page__instagram-cards-2-item">Three</div>
+            <div class="main-page__instagram-cards-2-item">Four</div>
+          </div>
+        </div>
+
+        <div class="main-page__instagram-cards-full" v-if="isInstBtnClicked">
+          <div class="main-page__instagram-cards-3">
+            <div class="main-page__instagram-cards-3-item">One</div>
+            <div class="main-page__instagram-cards-3-item">Two</div>
+            <div class="main-page__instagram-cards-3-item">Three</div>
+            <div class="main-page__instagram-cards-3-item">Four</div>
+            <div class="main-page__instagram-cards-3-item">Five</div>
+            <div class="main-page__instagram-cards-3-item">Six</div>
+            <div class="main-page__instagram-cards-3-item">Seven</div>
+            <div class="main-page__instagram-cards-3-item">Eight</div>
+          </div>
+        </div>
+
+        <div class="main-page__instagram-cards-full-mobile">
+          <div class="main-page__instagram-cards-3">
+            <div class="main-page__instagram-cards-3-item">One</div>
+            <div class="main-page__instagram-cards-3-item">Two</div>
+            <div class="main-page__instagram-cards-3-item">Three</div>
+            <div class="main-page__instagram-cards-3-item">Four</div>
+            <div class="main-page__instagram-cards-3-item">Five</div>
+            <div class="main-page__instagram-cards-3-item">Six</div>
+            <div class="main-page__instagram-cards-3-item">Seven</div>
+            <div class="main-page__instagram-cards-3-item">Eight</div>
+          </div>
+        </div>
       </div>
-      <button class="main-page__instagram-button">показать ещё</button>
+      <div class="main-page__instagram-button">
+        <button @click="instBtnClicked">показать ещё</button>
+      </div>
     </div>
 
     <div class="main-page__geography-title">
@@ -48,13 +82,14 @@
       <div class="main-page__geography-map">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d77819.99133109793!2d31.021465599999996!3d52.445184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sby!4v1642002285389!5m2!1sru!2sby"
-          width="1110"
+          width="100%"
           height="540"
           style="border: 0"
           allowfullscreen=""
           loading="lazy"
         ></iframe>
       </div>
+      <div class="main-page__geography-map-1128"></div>
     </div>
 
     <div class="main-page__footer">
@@ -109,6 +144,7 @@ export default {
   },
   data() {
     return {
+      isInstBtnClicked: false,
       isPopupBtnClicked: false,
       sliderItems: [
         { id: 1, name: "man", img: "man.png" },
@@ -126,6 +162,9 @@ export default {
     };
   },
   methods: {
+    instBtnClicked() {
+      this.isInstBtnClicked = !this.isInstBtnClicked;
+    },
     popupClick() {
       this.isPopupBtnClicked = true;
     },
@@ -193,6 +232,7 @@ export default {
   border-radius: 8px;
   border-color: #ffdf31;
   margin-left: 32px;
+  cursor: pointer;
 }
 
 .main-page__header-button-mobile-version {
@@ -208,17 +248,10 @@ export default {
   justify-content: center;
 }
 
-.main-page__screen-1-discription {
-  /* margin-left: 165px; */
-}
-
 .main-page__screen-1-discription-text {
-  /* width: 490px; */
   height: 198px;
-  /* left: 165px; */
-  top: 159px;
 
-  /* H1 */
+  top: 159px;
 }
 
 .main-page__screen-1-discription-text h1 {
@@ -267,23 +300,77 @@ export default {
 .main-page__instagram-button {
   /* width: 1110px; */
   height: 47px;
-  background: #f5f5f5;
+  /* background: #f5f5f5; */
   border-radius: 8px;
   margin-top: 30px;
   border-color: #f5f5f5;
+  text-align: center;
+}
+
+.main-page__instagram-button {
+  /* width: 1110px; */
+  height: 47px;
+  /* background: #f5f5f5; */
+  border-radius: 8px;
+  margin-top: 30px;
+  border-color: #f5f5f5;
+  text-align: center;
+}
+
+.main-page__instagram-button button {
+  width: 60vw;
+  height: 47px;
+
+  background: #f5f5f5;
+  border-radius: 8px;
 }
 
 .main-page__instagram-cards {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .main-page__instagram-cards-1 {
-  width: 540px;
-  height: 540px;
+  width: 570px;
+  height: 570px;
   background: #f5f5f5;
   border-radius: 8px;
   margin-top: 32px;
+  margin-right: 30px;
+}
+
+.main-page__instagram-cards-preview {
+  display: flex;
+  justify-content: center;
+}
+
+.main-page__instagram-cards-2 {
+  display: grid;
+  grid-template-columns: 300px 300px;
+  grid-template-rows: 300px 300px;
+  margin-right: 30px;
+  margin-top: 30px;
+}
+
+.main-page__instagram-cards-3 {
+  display: grid;
+  grid-template-columns: 300px 300px 300px 300px;
+  grid-template-rows: 300px 300px;
+  margin-right: 30px;
+  margin-top: 30px;
+}
+
+.main-page__instagram-cards-3-item {
+  background-color: #f5f5f5;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+
+.main-page__instagram-cards-2-item {
+  background-color: #f5f5f5;
+  margin-right: 30px;
+  margin-bottom: 30px;
 }
 
 .main-page__geography {
@@ -392,10 +479,6 @@ export default {
   margin-top: 33px;
 }
 
-.main-page__footer-second-copyright {
-  /* width: 600px; */
-}
-
 .main-page__footer-first-title {
   display: flex;
 }
@@ -415,7 +498,29 @@ export default {
   display: none;
 }
 
+.main-page__vacancies {
+  display: flex;
+  justify-content: center;
+}
+
+.main-page__instagram-cards-full {
+  display: flex;
+  justify-content: center;
+}
+
+.main-page__instagram-cards-full-mobile {
+  display: none;
+}
+
 @media screen and (max-width: 768px) and (min-width: 375px) {
+  .main-page__instagram-cards-full-mobile {
+    display: none;
+  }
+
+  .main-page__instagram-cards-full {
+    display: none;
+  }
+
   .main-page__vacancies-discription-title {
     width: 700px;
   }
@@ -440,24 +545,36 @@ export default {
 
   .main-page__header-button {
     margin-left: 0px;
-  }
-
-  .main-page__header-button {
+    cursor: pointer;
     width: 28vw;
   }
 
   .main-page__header-phone {
     font-size: 3vw;
   }
-  .main-page__header-button-mobile-version {
-    /* width: 610px; */
-  }
+
   .main-page__screen-1-discription-text-mobile-version {
+    display: none;
+  }
+
+  .main-page__instagram-cards-3 {
+    display: grid;
+    grid-template-columns: 210px 210px 210px;
+    grid-template-rows: 210px 210px 210px;
+    margin-right: 30px;
+    margin-top: 30px;
+  }
+
+  .main-page__instagram-cards-1 {
     display: none;
   }
 }
 
 @media screen and (max-width: 375px) {
+  .main-page__instagram-cards-full-mobile {
+    display: block;
+  }
+
   .main-page__screen-1-discription-text {
     display: none;
   }
@@ -531,15 +648,27 @@ export default {
     flex-direction: column;
   }
 
-  /* .main-page__screen-1-photo {
-    position: absolute;
-    width: 730px;
-    height: 426px;
-    left: 507px;
-    top: 259px;
+  .main-page__instagram-cards-1 {
+    display: none;
+  }
 
-    background: url("https://i.ibb.co/qjB1jKX/Group-5.png");
-    transform: matrix(-1, 0, 0, 1, 0, 0);
-  } */
+  .main-page__instagram-cards-preview {
+    display: none;
+  }
+
+  .main-page__instagram-cards-3 {
+    display: grid;
+    grid-template-columns: 300px;
+    grid-template-rows: 300px 300px 300px 300px 300px 300px 300px 300px;
+  }
+  .main-page__instagram-cards-3-item {
+    margin-right: 0px;
+  }
+  .main-carousel {
+    flex-direction: column;
+  }
+  .main-page__instagram-cards-full-mobile {
+    margin-left: 10px;
+  }
 }
 </style>

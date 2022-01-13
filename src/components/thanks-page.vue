@@ -87,9 +87,7 @@ export default {
   display: flex;
   justify-content: center;
 }
-.thanks-page__header-img {
-  /* margin-left: 165px; */
-}
+
 
 .thanks-page__header-img img {
   margin-top: 36px;
@@ -212,9 +210,7 @@ export default {
   margin-top: 33px;
 }
 
-.thanks-page__footer-second-copyright {
-  /* width: 600px; */
-}
+
 
 .thanks-page__data {
   display: flex;
@@ -305,9 +301,7 @@ export default {
   padding-left: 16px;
 }
 
-.thanks-page__data-personal-information-gender-post {
-  /* margin-left: 30px; */
-}
+
 
 .thanks-page__data-personal-information-gender-post-input {
   width: 255px;
@@ -405,10 +399,10 @@ export default {
   margin-right: 8px;
 }
 
-.thanks-page__content{
-    display: flex;
-    justify-content: center;
-    padding: 100px;
+.thanks-page__content {
+  display: flex;
+  justify-content: center;
+  padding: 100px;
 }
 
 @media screen and (max-width: 885px) and (min-width: 768px) {
@@ -422,6 +416,10 @@ export default {
 }
 
 @media screen and (max-width: 768px) and (min-width: 375px) {
+  .thanks-page__content {
+    flex-direction: column;
+  }
+
   .thanks-page__data {
     display: flex;
     margin-top: 32px;
@@ -471,6 +469,10 @@ export default {
 }
 
 @media screen and (max-width: 375px) {
+  .thanks-page__content {
+    flex-direction: column;
+  }
+
   .thanks-page__data {
     display: flex;
     margin-top: 32px;

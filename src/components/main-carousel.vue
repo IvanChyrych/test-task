@@ -84,6 +84,8 @@ export default {
 </script>
 
 <style >
+
+
 .main-carousel-wrapper {
   max-width: 612px;
   overflow: hidden;

@@ -9,7 +9,7 @@ export default {
   name: "vacancies-carousel-item",
   props: {
     vacanciesCarouselItem_data: {
-      type: Array,
+      type: Object,
       default: () => {},
     },
   },
