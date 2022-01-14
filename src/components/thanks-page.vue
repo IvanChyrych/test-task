@@ -1,5 +1,9 @@
 <template>
   <div class="thanks-page">
+    <popup-info-form-page
+      v-if="isPopupBtnClicked"
+      @closeThisPopup="closeThisPopup"
+    />
     <div class="thanks-page__header">
       <div class="thanks-page__header-img">
         <img src="..\assets\Group2.png" />
@@ -63,7 +67,7 @@
           © Гросс маркет 2020
         </div>
         <div class="thanks-page__footer-second-policy" @click="popupClick">
-          Политика обработки персональных данных1
+          Политика обработки персональных данных
         </div>
       </div>
     </div>
@@ -71,8 +75,21 @@
 </template>
 
 <script>
+import popupInfoFormPage from "../popup/popup-info-form-page.vue";
 export default {
   name: "thanks-page",
+  components: { popupInfoFormPage },
+  methods: {
+    popupClick() {
+      this.isPopupBtnClicked = true;
+    },
+    closeThisPopup() {
+      this.isPopupBtnClicked = false;
+    },
+  },
+  data() {
+    return { isPopupBtnClicked: false };
+  },
 };
 </script>
 
@@ -87,7 +104,6 @@ export default {
   display: flex;
   justify-content: center;
 }
-
 
 .thanks-page__header-img img {
   margin-top: 36px;
@@ -210,8 +226,6 @@ export default {
   margin-top: 33px;
 }
 
-
-
 .thanks-page__data {
   display: flex;
   margin-top: 32px;
@@ -300,8 +314,6 @@ export default {
   border-radius: 8px;
   padding-left: 16px;
 }
-
-
 
 .thanks-page__data-personal-information-gender-post-input {
   width: 255px;
@@ -402,7 +414,7 @@ export default {
 .thanks-page__content {
   display: flex;
   justify-content: center;
-  padding: 100px;
+  padding: 20px;
 }
 
 @media screen and (max-width: 885px) and (min-width: 768px) {

@@ -189,7 +189,7 @@ export default {
 
 .main-page__header {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   margin-top: 35px;
 }
 

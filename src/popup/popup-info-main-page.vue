@@ -86,7 +86,7 @@ export default {
   top: 0;
   /* bottom: 0; */
   flex-direction: column;
-  height: 100vh;
+  height: 180vh;
   z-index: 10;
 }
 .popup-info__content {
