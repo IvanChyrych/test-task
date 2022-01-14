@@ -116,7 +116,7 @@ export default {
     top: 0;
     /* bottom: 0; */
     flex-direction: column;
-    height: 280vh;
+    height: 300vh;
     z-index: 10;
     padding: 90px;
   }
