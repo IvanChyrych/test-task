@@ -86,7 +86,7 @@ export default {
   top: 0;
   /* bottom: 0; */
   flex-direction: column;
-  height: 230vh;
+  height: 100vh;
   z-index: 10;
   padding: 90px;
 }
@@ -105,5 +105,21 @@ export default {
 
 .popup-info__header-close {
   z-index: 10;
+}
+
+@media screen and (max-width: 375px) {
+  .popup-info {
+    background: rgba(64, 64, 64, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    /* bottom: 0; */
+    flex-direction: column;
+    height: 280vh;
+    z-index: 10;
+    padding: 90px;
+  }
 }
 </style>

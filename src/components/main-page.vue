@@ -189,7 +189,7 @@ export default {
 
 .main-page__header {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin-top: 35px;
 }
 
@@ -600,6 +600,12 @@ export default {
   .main-page__vacancies-discription-buttons {
     display: none;
   }
+
+  .main-page__header {
+  
+  justify-content: space-between;
+ 
+}
 
   .main-page__header-button {
     display: none;
