@@ -63,7 +63,7 @@
           © Гросс маркет 2020
         </div>
         <div class="thanks-page__footer-second-policy" @click="popupClick">
-          Политика обработки персональных данных
+          Политика обработки персональных данных1
         </div>
       </div>
     </div>
